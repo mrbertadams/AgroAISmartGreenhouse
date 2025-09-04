@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AgroAI Smart Greenhouse — Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#062b20; --bg2:#073a2b; --card:#0c3f2f; --ink:#eafff6; --muted:#b6f1d6; --accent:#10b981; --accent2:#34d399; --accent3:#86efac;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto; color:var(--ink); background:
+    radial-gradient(1200px 800px at 100% -10%, rgba(16,185,129,.15), transparent 60%),
+    linear-gradient(180deg, var(--bg), #041f18 60%);
+  }
+  a{color:var(--accent3)}
+  .wrap{max-width:1120px; margin:0 auto; padding:24px}
+  header{position:sticky; top:0; backdrop-filter:blur(10px); background:linear-gradient(180deg, rgba(6,43,32,.92), rgba(6,43,32,.55)); border-bottom:1px solid rgba(134,239,172,.18); z-index:50}
+  .topbar{display:flex; align-items:center; justify-content:space-between}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+  .logo{width:34px; height:34px; border-radius:50%; background:conic-gradient(from 180deg,var(--accent),var(--accent2),var(--accent3)); box-shadow:0 6px 16px rgba(0,0,0,.3)}
+  .btn{background:linear-gradient(135deg, var(--accent), var(--accent2)); color:#062b20; font-weight:700; padding:10px 14px; border:none; border-radius:12px; cursor:pointer; box-shadow:0 6px 18px rgba(16,185,129,.35)}
+
+  /* Slides */
+  .slides{counter-reset: slide}
+  .slide{counter-increment: slide; position:relative; background:linear-gradient(180deg, rgba(12,63,47,.9), rgba(12,63,47,.6)); border:1px solid rgba(134,239,172,.22); border-radius:22px; padding:26px; margin:18px 0; box-shadow:0 16px 40px rgba(0,0,0,.35)}
+  .slide h1, .slide h2{margin:0 0 8px}
+  .slide h1{font-size:36px}
+  .slide h2{font-size:28px}
+  .slide .subtitle{color:var(--muted); margin-bottom:6px}
+  .slide:after{content: counter(slide); position:absolute; right:18px; bottom:14px; font-weight:700; color:var(--accent3); opacity:.9}
+  ul{margin:8px 0 0; padding-left:18px}
+  .grid{display:grid; gap:16px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{background:linear-gradient(180deg, rgba(12,63,47,.85), rgba(12,63,47,.55)); border:1px solid rgba(134,239,172,.22); border-radius:16px; padding:14px}
+  .kpi{font-size:28px; font-weight:700; color:var(--accent3)}
+  .muted{color:var(--muted)}
+  .imgph{display:grid; place-items:center; height:180px; border:2px dashed rgba(134,239,172,.35); border-radius:14px; color:var(--muted)}
+
+  /* Print settings for PDF */
+  @media print{
+    header{display:none}
+    body{background:white; color:#0b1f17}
+    .slide{page-break-after:always; border-color:#d1fae5; background:white; box-shadow:none}
+    a{color:#0b7d56}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <div class="brand"><div class="logo"></div> AgroAI Smart Greenhouse — Pitch Deck</div>
+      <div style="display:flex; gap:10px">
+        <button class="btn" onclick="window.print()">Print / Save PDF</button>
+        <button class="btn" onclick="document.getElementById('links').scrollIntoView({behavior:'smooth'})">Add Links</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap slides">
+
+    <!-- 1. Title -->
+    <section class="slide">
+      <h1>AgroAI Smart Greenhouse</h1>
+      <div class="subtitle">Feed more with less — AI + IoT for climate‑resilient, profitable farming</div>
+      <div class="grid g3">
+        <div class="card"><div class="kpi">+40%</div><div class="muted">Yield uplift</div></div>
+        <div class="card"><div class="kpi">−30%</div><div class="muted">Water use</div></div>
+        <div class="card"><div class="kpi">+50%</div><div class="muted">Farmer margin</div></div>
+      </div>
+      <ul>
+        <li>HQ: <strong>Accra, Ghana</strong> • Pilots: <strong>Ghana, Kenya</strong></li>
+        <li>Theme: <strong>AI for Impact</strong> • SDGs: <strong>2, 6, 13</strong></li>
+      </ul>
+    </section>
+
+    <!-- 2. Problem -->
+    <section class="slide">
+      <h2>Problem</h2>
+      <ul>
+        <li><strong>Climate volatility</strong> causes crop failure and income instability.</li>
+        <li><strong>Water & input waste</strong> due to lack of real‑time data and control.</li>
+        <li><strong>Disease & pests</strong> detected late; actions are reactive, not predictive.</li>
+        <li><strong>Knowledge gap</strong> for smallholders on timing, dosage, and best practices.</li>
+      </ul>
+    </section>
+
+    <!-- 3. Solution -->
+    <section class="slide">
+      <h2>Solution — Full‑stack AI Smart Greenhouse</h2>
+      <div class="grid g3">
+        <div class="card"><strong>Sense:</strong> Edge sensors capture temp, humidity, soil moisture/EC, light → Azure IoT Hub.</div>
+        <div class="card"><strong>Predict:</strong> Azure ML models optimize fertigation, flag disease risk, forecast harvest windows.</div>
+        <div class="card"><strong>Act:</strong> Automated irrigation/ventilation; WhatsApp/SMS nudges for growers.</div>
+      </div>
+    </section>
+
+    <!-- 4. Product / Demo -->
+    <section class="slide">
+      <h2>Product Snapshot</h2>
+      <div class="grid g2">
+        <div class="card">
+          <div class="imgph">Place App Screenshot / Dashboard</div>
+          <ul>
+            <li>AI Crop Brain: adaptive set‑points by growth stage</li>
+            <li>Farmer app: low‑bandwidth, multilingual, offline‑tolerant</li>
+            <li>Device mgmt: remote OTA updates and sensor health</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="imgph">Place Greenhouse / Pilot Photo</div>
+          <ul>
+            <li>Tomato pilot in Ghana (controlled environment)</li>
+            <li>Cluster pilots with co‑ops & ag universities</li>
+            <li>Roadmap: traceability & export readiness</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Market -->
+    <section class="slide">
+      <h2>Market & Timing</h2>
+      <ul>
+        <li><strong>Global Smart Agriculture</strong>: ~$16B (2024) → ~$32B (2028)</li>
+        <li><strong>Africa</strong>: 60% workforce in ag; rapid CEA adoption potential</li>
+        <li><strong>MENA</strong>: Desert agriculture & water scarcity → high CEA demand</li>
+      </ul>
+      <div class="muted">Initial focus: West/East Africa → Expansion: UAE & wider MENA → Global CEA</div>
+    </section>
+
+    <!-- 6. Business Model -->
+    <section class="slide">
+      <h2>Business Model</h2>
+      <div class="grid g2">
+        <div class="card">
+          <strong>Hardware + SaaS</strong>
+          <ul>
+            <li>Starter Kits (sensors + controller)</li>
+            <li>SaaS tiers: Smallholder ($15/mo), Commercial ($100+/mo)</li>
+            <li>Add‑ons: traceability, compliance, analytics</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>Channels</strong>
+          <ul>
+            <li>B2B: co‑ops, universities, NGOs, governments</li>
+            <li>B2C: farmer subscriptions via app</li>
+            <li>B2B2C: distributors & ag‑retail networks</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Go To Market -->
+    <section class="slide">
+      <h2>Go‑To‑Market</h2>
+      <ul>
+        <li>Pilot clusters with co‑ops & research farms (50 units in 12 months)</li>
+        <li>Demonstration farms → field days → distributor onboarding</li>
+        <li>Public‑private projects for food security & climate adaptation</li>
+      </ul>
+    </section>
+
+    <!-- 8. Tech & IP -->
+    <section class="slide">
+      <h2>Technology & IP</h2>
+      <ul>
+        <li><strong>Azure IoT Hub</strong> for device telemetry; <strong>Azure ML</strong> for inference & retraining</li>
+        <li>Edge firmware for sensor fusion; OTA updates; rules engine</li>
+        <li>Proprietary datasets (climate x crop x control responses) → model moat</li>
+        <li>Planned protections: trade secrets (algorithms), design patents (control modules)</li>
+      </ul>
+    </section>
+
+    <!-- 9. Impact -->
+    <section class="slide">
+      <h2>Impact</h2>
+      <div class="grid g3">
+        <div class="card"><div class="kpi">SDG 2</div><div class="muted">Higher & more stable yields</div></div>
+        <div class="card"><div class="kpi">SDG 6</div><div class="muted">Precision irrigation saves water</div></div>
+        <div class="card"><div class="kpi">SDG 13</div><div class="muted">Lower emissions via efficiency</div></div>
+      </div>
+      <ul>
+        <li>Targets: +40% yield, −30% water, −25% fertilizer, +50% margin</li>
+      </ul>
+    </section>
+
+    <!-- 10. Traction -->
+    <section class="slide">
+      <h2>Traction</h2>
+      <ul>
+        <li>Pilot greenhouse operational (tomatoes) in Ghana</li>
+        <li>MOUs with 2 local co‑ops (300+ farmers) & a university ag department</li>
+        <li>Pre‑revenue; pipeline of 50 pilot units (next 12 months)</li>
+      </ul>
+    </section>
+
+    <!-- 11. Competition -->
+    <section class="slide">
+      <h2>Competitive Landscape</h2>
+      <div class="grid g2">
+        <div class="card">
+          <strong>Substitutes</strong>
+          <ul>
+            <li>Manual irrigation & rule‑based controllers</li>
+            <li>Standalone sensor kits without AI</li>
+          </ul>
+        </div>
+        <div class="card">
+          <strong>Our Edge</strong>
+          <ul>
+            <li>AI optimization end‑to‑end (sense→predict→act)</li>
+            <li>Low‑bandwidth UX (WhatsApp/SMS, multilingual)</li>
+            <li>Data moat from diverse climates/crops</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. Team -->
+    <section class="slide">
+      <h2>Team</h2>
+      <ul>
+        <li><strong>Nii Ofoliquaye</strong> — Founder & CEO (AI agent developer, product & systems)</li>
+        <li><strong>Agronomy Lead</strong> — 10+ years greenhouse ops & crop science</li>
+        <li>Advisors: IoT hardware, climate‑smart ag, distribution</li>
+      </ul>
+    </section>
+
+    <!-- 13. Roadmap -->
+    <section class="slide">
+      <h2>Roadmap (Next 12–18 Months)</h2>
+      <ul>
+        <li>Q1–Q2: Pilot scale‑out to 50 greenhouses; refine ML models</li>
+        <li>Q3: Distributor onboarding; traceability module beta</li>
+        <li>Q4: MENA sand‑greenhouse pilots; compliance toolkits</li>
+      </ul>
+    </section>
+
+    <!-- 14. Financials -->
+    <section class="slide">
+      <h2>Financial Snapshot (Model)</h2>
+      <ul>
+        <li>Unit economics: positive at ≥30 units per cluster (hardware margin + SaaS)</li>
+        <li>12‑mo goal: 50 units; ARR run‑rate $60k–$120k (mix SH/Commercial)</li>
+        <li>24‑mo goal: 250+ units; ARR $300k–$600k; gross margin improving with scale</li>
+      </ul>
+      <div class="muted">*Illustrative; refined model available on request</div>
+    </section>
+
+    <!-- 15. Fundraise & Use of Funds -->
+    <section class="slide">
+      <h2>Fundraising Ask & Use of Funds</h2>
+      <ul>
+        <li>Seeking <strong>$100k–$250k</strong> seed to scale pilots & production</li>
+        <li>Use: 40% hardware & manufacturing, 35% ML/firmware, 15% pilots & field ops, 10% compliance & certifications</li>
+      </ul>
+    </section>
+
+    <!-- 16. MENA / Abu Dhabi Fit -->
+    <section class="slide">
+      <h2>MENA Expansion & Abu Dhabi Fit</h2>
+      <ul>
+        <li>Desert agriculture needs water‑efficient CEA → strong product‑market fit</li>
+        <li>Leverage <strong>Microsoft Azure</strong> & ADIO ecosystems for large‑scale pilots</li>
+        <li>Supply chain & export hubs enable rapid regional rollout</li>
+      </ul>
+    </section>
+
+    <!-- 17. Call to Action -->
+    <section class="slide">
+      <h2>Call to Action</h2>
+      <ul>
+        <li>Partners for pilot clusters in Africa & MENA</li>
+        <li>Climate funds & grant co‑financing for scale‑up</li>
+        <li>Hardware manufacturing & distribution partners</li>
+      </ul>
+    </section>
+
+    <!-- 18. Links & Contact -->
+    <section class="slide" id="links">
+      <h2>Links & Contact</h2>
+      <div class="grid g2">
+        <div class="card">
+          <strong>Pitch Video</strong>
+          <div class="imgph">Paste link below</div>
+          <div><a id="videoLink" href="https://youtu.be/yourpitchvideo" target="_blank">https://youtu.be/yourpitchvideo</a></div>
+        </div>
+        <div class="card">
+          <strong>Pitch Deck (this doc as PDF)</strong>
+          <div class="imgph">Use Print → Save as PDF</div>
+          <div><a id="deckLink" href="https://drive.google.com/file/d/yourpitchdeck" target="_blank">https://drive.google.com/file/d/yourpitchdeck</a></div>
+        </div>
+      </div>
+      <ul>
+        <li>Founder: <span id="founder">Nii Ofoliquaye</span> • <a id="email" href="mailto:founder@agroai.green">founder@agroai.green</a></li>
+        <li>Website: <a id="site" href="#">Add link</a> • LinkedIn: <a id="li" href="#">Add link</a></li>
+      </ul>
+    </section>
+
+  </main>
+
+</body>
+</html>
