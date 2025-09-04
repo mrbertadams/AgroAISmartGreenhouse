@@ -1,1 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AgroAI Smart Greenhouse — AI for Impact</title>
+  <meta name="description" content="AI + IoT Smart Greenhouse platform for climate‑resilient, resource‑efficient food production." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #062b20;           /* deep green */
+      --bg-2: #073a2b;         /* slightly lighter */
+      --card: #0c3f2f;
+      --ink: #eafff6;          /* near white */
+      --muted: #b6f1d6;        /* mint */
+      --accent: #10b981;       /* emerald */
+      --accent-2: #34d399;     /* lighter emerald */
+      --accent-3: #86efac;     /* pale green */
+      --warning: #f59e0b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius-xl: 22px;
+      --radius-lg: 16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--ink); background:
+        radial-gradient(1200px 800px at 90% -10%, rgba(16,185,129,.20), transparent 60%),
+        radial-gradient(1000px 600px at -10% 10%, rgba(52,211,153,.15), transparent 60%),
+        linear-gradient(180deg, var(--bg), #041f18 60%);
+      line-height:1.6;
+    }
+    a{color:var(--accent-3); text-decoration:none}
+    a:hover{opacity:.9; text-decoration:underline}
+    .wrap{max-width:1200px; margin:0 auto; padding:28px}
+    header{position:sticky; top:0; z-index:50; backdrop-filter: blur(10px); background:linear-gradient(180deg, rgba(6,43,32,.90), rgba(6,43,32,.55)); border-bottom:1px solid rgba(134,239,172,.15)}
+    .nav{display:flex; align-items:center; justify-content:space-between}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.5px}
+    .logo{width:36px; height:36px; display:grid; place-items:center; border-radius:50%; background:conic-gradient(from 180deg at 50% 50%, var(--accent), var(--accent-2), var(--accent-3)); box-shadow:var(--shadow)}
+    .pill{display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(134,239,172,.25); background:rgba(12,63,47,.6); padding:10px 14px; border-radius:999px}
+    .cta{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#062b20; font-weight:700; padding:12px 18px; border:none; border-radius:14px; cursor:pointer; box-shadow:0 6px 18px rgba(16,185,129,.35); transition:transform .08s ease-in-out}
+    .cta:hover{transform:translateY(-1px)}
+    .hero{display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center; padding:42px 0}
+    .hero-card{background: linear-gradient(180deg, rgba(12,63,47,.9), rgba(7,58,43,.7)); border:1px solid rgba(134,239,172,.22); border-radius:var(--radius-xl); box-shadow:var(--shadow); padding:28px}
+    .badge{display:inline-flex; align-items:center; gap:8px; color:var(--ink); background:rgba(16,185,129,.15); border:1px solid rgba(52,211,153,.45); padding:8px 12px; border-radius:999px; font-weight:600}
+    h1{font-size:clamp(32px, 4.2vw, 54px); line-height:1.1; margin:12px 0 10px}
+    .subtitle{color:var(--muted); font-weight:500; font-size:clamp(16px,1.6vw,18px)}
+    .grid{display:grid; gap:20px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{background:linear-gradient(180deg, rgba(12,63,47,.85), rgba(12,63,47,.55)); border:1px solid rgba(134,239,172,.2); border-radius:var(--radius-lg); padding:20px; box-shadow:var(--shadow)}
+    .icon{width:28px; height:28px}
+    .metric{font-size:28px; font-weight:700; color:var(--accent-3)}
+    .section{padding:36px 0}
+    .section h2{font-size:28px; margin:0 0 8px}
+    .section p.lead{color:var(--muted)}
+    .steps{counter-reset: s}
+    .step{position:relative; padding-left:54px}
+    .step::before{counter-increment:s; content: counter(s); position:absolute; left:0; top:0; width:38px; height:38px; display:grid; place-items:center; border-radius:12px; font-weight:700; color:#062b20; background:linear-gradient(135deg, var(--accent-3), var(--accent)); box-shadow:0 6px 16px rgba(52,211,153,.35)}
+    .links-card a.btn{display:inline-flex; align-items:center; gap:8px; background:rgba(16,185,129,.18); border:1px solid rgba(134,239,172,.35); padding:12px 14px; border-radius:12px; font-weight:600}
+    .links-card input{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(134,239,172,.3); background:rgba(6,43,32,.65); color:var(--ink)}
+    .links-card label{font-weight:600; color:var(--accent-3)}
+    .muted{opacity:.9; color:var(--muted)}
+    .hl{color:var(--accent-3)}
+    .kpi{display:flex; align-items:center; gap:12px}
+    .kpi .dot{width:10px; height:10px; background:var(--accent-2); border-radius:50%; box-shadow:0 0 0 6px rgba(16,185,129,.12)}
+    .footer{padding:36px 0; color:var(--muted); font-size:14px}
 
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+    }
+
+    /* Print (for PDF export) */
+    @media print{
+      header{display:none}
+      .cta{display:none}
+      body{background:white; color:#0b1f17}
+      .card, .hero-card{box-shadow:none; background:white; border-color:#d1fae5}
+      a{color:#0b7d56}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- leaf icon -->
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#062b20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C7 4 3 9 3 14a8.5 8.5 0 0 0 9 8c5 0 9-5 9-10 0-4-3-7-9-10Z"></path>
+            <path d="M12 2v20"></path>
+          </svg>
+        </div>
+        AgroAI Smart Greenhouse
+      </div>
+      <div class="pill" role="navigation" aria-label="Quick links">
+        <a href="#problem">Problem</a>
+        <span aria-hidden="true">•</span>
+        <a href="#solution">Solution</a>
+        <span aria-hidden="true">•</span>
+        <a href="#links">Links</a>
+      </div>
+      <button class="cta" onclick="window.scrollTo({top: document.getElementById('links').offsetTop - 20, behavior:'smooth'})">Add Your Info</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-label="Hero">
+      <div class="hero-card">
+        <span class="badge">AI for Impact • Climate‑Smart Ag</span>
+        <h1><span class="hl">Feed more</span> with less — AI‑powered greenhouses for resilient, profitable farming.</h1>
+        <p class="subtitle">We combine <strong>IoT sensors</strong>, a real‑time <strong>AI Crop Brain</strong>, and <strong>automation</strong> to boost yields by up to <strong>40%</strong> while cutting water use by ~<strong>30%</strong>.
+        </p>
+        <div class="grid grid-3" style="margin-top:18px">
+          <div class="card kpi"><span class="dot"></span><div><div class="metric">+40%</div><div class="muted">Yield Uplift</div></div></div>
+          <div class="card kpi"><span class="dot"></span><div><div class="metric">−30%</div><div class="muted">Water Usage</div></div></div>
+          <div class="card kpi"><span class="dot"></span><div><div class="metric">+50%</div><div class="muted">Farmer Margin</div></div></div>
+        </div>
+      </div>
+      <div class="grid" style="gap:18px">
+        <div class="card">
+          <h3 style="margin:0 0 6px">At a glance</h3>
+          <ul style="margin:0; padding-left:18px">
+            <li>Azure IoT Hub + Azure ML for model training/inference</li>
+            <li>WhatsApp/SMS alerts for low‑connectivity environments</li>
+            <li>Auto irrigation + ventilation controls</li>
+            <li>Piloting in <span id="field-operating-countries">Ghana, Kenya</span>; HQ: <span id="field-hq">Accra, Ghana</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin:0 0 6px">Contact</h3>
+          <div class="muted">Founder: <span id="field-founder">Nii Ofoliquaye</span> • <a id="field-email" href="mailto:founder@agroai.green">founder@agroai.green</a></div>
+          <div class="muted">LinkedIn: <a id="field-linkedin" href="#">Add link</a></div>
+          <div class="muted">Website: <a id="field-website" href="#">Add link</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problem">
+      <h2>Problem</h2>
+      <p class="lead">Smallholder farmers face <strong>climate volatility</strong>, <strong>water scarcity</strong>, and <strong>plant disease</strong>—leading to low yields and margins.</p>
+      <div class="grid grid-3">
+        <div class="card step"><strong>Unpredictable Weather</strong><br>Outdoor crops are exposed to heat waves, floods, and erratic seasons.</div>
+        <div class="card step"><strong>Resource Inefficiency</strong><br>Water and inputs are over‑applied due to missing, real‑time data.</div>
+        <div class="card step"><strong>Knowledge Gap</strong><br>Farmers lack predictive insights and timely guidance for action.</div>
+      </div>
+    </section>
+
+    <section class="section" id="solution">
+      <h2>Solution</h2>
+      <p class="lead">A full‑stack <strong>AI + IoT Smart Greenhouse</strong> that senses, predicts, and automates.</p>
+      <div class="grid grid-3">
+        <div class="card"><strong>Sense</strong><br>Edge sensors stream temperature, humidity, soil moisture, EC, and light into Azure IoT Hub.</div>
+        <div class="card"><strong>Predict</strong><br>Azure ML models flag disease risk, optimize fertigation, and forecast harvest windows.</div>
+        <div class="card"><strong>Act</strong><br>Automation controls irrigation, fans, vents; farmers get WhatsApp/SMS nudges.</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Product Highlights</h2>
+      <div class="grid grid-3">
+        <div class="card"><strong>AI Crop Brain</strong><br>Continuous optimization across growth stages with adaptive setpoints.</div>
+        <div class="card"><strong>Farmer App</strong><br>Actionable alerts, multilingual UI, low‑bandwidth friendly.</div>
+        <div class="card"><strong>Traceability‑ready</strong><br>Roadmap for batch QA, certifications, and export compliance.</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Impact</h2>
+      <div class="grid grid-3">
+        <div class="card"><div class="metric">SDG2</div><div class="muted">Zero Hunger via higher, stable yields</div></div>
+        <div class="card"><div class="metric">SDG6</div><div class="muted">Water savings with precision irrigation</div></div>
+        <div class="card"><div class="metric">SDG13</div><div class="muted">Lower emissions through efficiency</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="market">
+      <h2>Markets & Expansion</h2>
+      <p class="lead">Initial focus on West/East Africa; strong expansion potential into MENA (desert agriculture) and global CEA.</p>
+      <div class="grid grid-2">
+        <div class="card"><strong>Go‑to‑Market</strong><br>Co‑ops + ag universities for pilot clusters; B2B2C via distributors; public‑private deployments.</div>
+        <div class="card"><strong>Business Model</strong><br>Hardware starter kits + SaaS (analytics, automations). Tiers for smallholders and commercial farms.</div>
+      </div>
+    </section>
+
+    <section class="section links-card" id="links">
+      <h2>Links</h2>
+      <p class="lead">Paste your links below — they will update the buttons instantly.</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <label for="input-video">Pitch Video Link</label>
+          <input id="input-video" placeholder="https://youtu.be/yourpitchvideo" value="https://youtu.be/yourpitchvideo" />
+          <p class="muted" style="margin:8px 0 14px">Upload a 3–5 min intro video (unlisted). Cover: the problem, your solution, pilot footage, and the call‑to‑action: <em>“We’re ready to scale globally with Microsoft.”</em></p>
+          <a id="btn-video" class="btn" href="https://youtu.be/yourpitchvideo" target="_blank" rel="noopener">
+            <!-- play icon -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Open Pitch Video
+          </a>
+        </div>
+        <div class="card">
+          <label for="input-deck">Pitch Deck Link</label>
+          <input id="input-deck" placeholder="https://drive.google.com/file/d/yourpitchdeck" value="https://drive.google.com/file/d/yourpitchdeck" />
+          <p class="muted" style="margin:8px 0 14px">Deck should include: problem, opportunity, solution, market size, technical details, traction, clients, financials, team, and fundraising history.</p>
+          <a id="btn-deck" class="btn" href="https://drive.google.com/file/d/yourpitchdeck" target="_blank" rel="noopener">
+            <!-- file icon -->
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            Open Pitch Deck
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="your-info">
+      <h2>Your Details (quick edit)</h2>
+      <p class="lead">Use the form to fill in your details. The content at the top of the page updates instantly.</p>
+      <div class="grid grid-2">
+        <div class="card">
+          <label>Founder Name</label>
+          <input id="input-founder" placeholder="Your full name" value="Nii Ofoliquaye" />
+          <label style="margin-top:12px">Email</label>
+          <input id="input-email" placeholder="name@example.com" value="founder@agroai.green" />
+          <label style="margin-top:12px">LinkedIn URL</label>
+          <input id="input-linkedin" placeholder="https://www.linkedin.com/in/you" />
+          <label style="margin-top:12px">Website</label>
+          <input id="input-website" placeholder="https://agroai.green" />
+        </div>
+        <div class="card">
+          <label>Headquarters (City, Country)</label>
+          <input id="input-hq" placeholder="Accra, Ghana" value="Accra, Ghana" />
+          <label style="margin-top:12px">Operating Countries</label>
+          <input id="input-operating" placeholder="Ghana, Kenya" value="Ghana, Kenya" />
+          <div style="display:flex; gap:10px; margin-top:16px">
+            <button class="cta" type="button" onclick="applyEdits()">Apply Edits</button>
+            <button class="cta" type="button" style="background:linear-gradient(135deg,#a7f3d0,#6ee7b7);" onclick="window.print()">Print / Save PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer wrap">
+    <div>© <span id="year"></span> AgroAI Smart Greenhouse • Built for <strong>AI for Impact</strong></div>
+  </footer>
+
+  <script>
+    const $ = (id)=>document.getElementById(id);
+    const setLink = (btnId, inputId) => {
+      const val = $(inputId).value.trim();
+      const btn = $(btnId);
+      if(!val) return;
+      btn.href = val;
+      btn.setAttribute('aria-label', val);
+    };
+    function applyEdits(){
+      // links
+      setLink('btn-video','input-video');
+      setLink('btn-deck','input-deck');
+      // contact + company info
+      const founder = $('input-founder').value.trim();
+      const email = $('input-email').value.trim();
+      const linkedin = $('input-linkedin').value.trim();
+      const website = $('input-website').value.trim();
+      const hq = $('input-hq').value.trim();
+      const ops = $('input-operating').value.trim();
+
+      if(founder) $('field-founder').textContent = founder;
+      if(email){
+        $('field-email').textContent = email;
+        $('field-email').href = 'mailto:'+email;
+      }
+      if(linkedin){ $('field-linkedin').href = linkedin; $('field-linkedin').textContent = 'LinkedIn'; }
+      if(website){ $('field-website').href = website; $('field-website').textContent = website.replace(/^https?:\/\//,''); }
+      if(hq) $('field-hq').textContent = hq;
+      if(ops) $('field-operating-countries').textContent = ops;
+
+      // visual nudge
+      const btns = document.querySelectorAll('.cta');
+      btns.forEach(b=>{b.style.transform='translateY(-1px)'; setTimeout(()=>b.style.transform='', 120)});
+    }
+    // initialize year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
